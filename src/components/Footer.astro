@@ -1,0 +1,43 @@
+---
+import { site } from '../lib/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t-2 border-accent/50 bg-hero-deep text-white">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr_1fr] md:px-8">
+    <div>
+      <p class="font-display text-2xl font-bold tracking-[0.08em]">{site.name}</p>
+      <p class="mt-3 max-w-sm text-sm leading-relaxed text-white/70">
+        Founder-led studio: discover operational gaps, build custom systems, then warehouse and
+        practical AI when the data is ready—any industry where work creates data.
+      </p>
+    </div>
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">Explore</p>
+      <ul class="mt-4 space-y-2 text-sm text-white/80">
+        <li><a class="hover:text-white" href="/audit">Operational Gap Audit</a></li>
+        <li><a class="hover:text-white" href="/how-we-work">How we work</a></li>
+        <li><a class="hover:text-white" href="/about">About</a></li>
+        <li><a class="hover:text-white" href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">Start</p>
+      <ul class="mt-4 space-y-2 text-sm text-white/80">
+        <li>
+          <a class="hover:text-white" href={site.primaryCtaHref}>{site.primaryCta}</a>
+        </li>
+        <li>
+          <a class="hover:text-white" href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li><a class="hover:text-white" href="/privacy">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <p class="mx-auto max-w-6xl px-5 py-5 text-xs text-white/45 md:px-8">
+      © {year} {site.name}.
+    </p>
+  </div>
+</footer>

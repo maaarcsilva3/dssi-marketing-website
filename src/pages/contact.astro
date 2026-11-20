@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+  title={`Contact ${site.name} | Book a fit call`}
+  description="Book a 30-minute fit call or request the Operational Gap Audit. Tell us the one process that's breaking—we'll reply with next steps."
+>
+  <Header />
+  <PageHeader
+    eyebrow="Contact"
+    title="Talk to DSSI"
+    subtitle="Book a 30-minute fit call or tell us the one operational process that's breaking. We usually reply within one business day—with clear next steps, not a generic nurture sequence."
+  />
+
+  <section class="bg-surface-elevated">
+    <div class="mx-auto grid max-w-6xl gap-14 px-5 py-20 md:grid-cols-2 md:px-8">
+      <div id="book" class="scroll-mt-28">
+        <h2 class="font-display text-2xl font-bold">Book a 30-minute fit call</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+          We'll name one process, what it's costing you, and whether an Operational Gap Audit makes
+          sense—and outline how custom systems, warehouse, and AI fit if you proceed.
+        </p>
+        <div class="mt-8 border border-border bg-surface p-8">
+          <p class="font-display text-lg font-semibold text-ink">Email to book</p>
+          <p class="mt-2 max-w-sm text-sm text-ink-muted">
+            Send your company name and the process that hurts most. We'll propose times.
+          </p>
+          <a
+            href={`mailto:${site.email}?subject=${encodeURIComponent('Fit call request - DSSI')}`}
+            class="btn-primary mt-6"
+          >
+            {site.primaryCta}
+          </a>
+          <p class="mt-4 text-sm text-ink-muted">
+            Or write directly to
+            <a
+              class="font-medium text-ink underline decoration-accent underline-offset-2"
+              href={`mailto:${site.email}`}
+            >
+              {site.email}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div id="audit-request" class="scroll-mt-28">
+        <h2 class="font-display text-2xl font-bold">Request the Operational Gap Audit</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+          Prefer to write first? Describe the blind spot—the handoff, the number nobody trusts, the
+          report that takes days. We'll respond by email.
+        </p>
+
+        <form class="mt-8 space-y-5" id="contact-form">
+          <div>
+            <label for="name" class="block text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              required
+              class="mt-2 w-full rounded-sm border border-border bg-surface-elevated px-4 py-3 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/40"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              class="mt-2 w-full rounded-sm border border-border bg-surface-elevated px-4 py-3 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/40"
+            />
+          </div>
+          <div>
+            <label for="company" class="block text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              Company
+            </label>
+            <input
+              id="company"
+              name="company"
+              class="mt-2 w-full rounded-sm border border-border bg-surface-elevated px-4 py-3 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/40"
+            />
+          </div>
+          <div>
+            <label for="pain" class="block text-xs font-semibold uppercase tracking-[0.14em] text-ink-muted">
+              Biggest ops blind spot
+            </label>
+            <textarea
+              id="pain"
+              name="pain"
+              rows="4"
+              required
+              class="mt-2 w-full rounded-sm border border-border bg-surface-elevated px-4 py-3 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/40"
+              placeholder="e.g. Our team re-enters the same order data in three places, and leadership still doesn't trust the weekly numbers."
+            ></textarea>
+          </div>
+          <div class="hidden" aria-hidden="true">
+            <label for="company_website">Leave blank</label>
+            <input id="company_website" name="company_website" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="btn-primary w-full sm:w-auto">Send message</button>
+          <p id="form-status" class="text-sm text-ink-muted" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const status = document.getElementById('form-status');
+  const emailTo = 'hello@dssi.example';
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    if (data.get('company_website')) return;
+
+    const name = String(data.get('name') || '');
+    const email = String(data.get('email') || '');
+    const company = String(data.get('company') || '');
+    const pain = String(data.get('pain') || '');
+
+    const subject = encodeURIComponent(`DSSI inquiry - ${company || name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\n\nBiggest ops blind spot:\n${pain}`,
+    );
+
+    if (status) status.textContent = 'Opening your email client…';
+    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+  });
+</script>

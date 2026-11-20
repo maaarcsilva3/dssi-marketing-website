@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout title={`Privacy | ${site.name}`}>
+  <Header />
+  <PageHeader
+    eyebrow="Legal"
+    title="Privacy"
+    subtitle="How we handle information you share through this website."
+  />
+
+  <section class="bg-surface-elevated">
+    <div class="mx-auto max-w-3xl space-y-6 px-5 py-20 text-sm leading-relaxed text-ink-muted md:px-8">
+      <p>
+        If you book a call or send a message, we use your name, email, company, and the details you
+        share only to respond and evaluate fit for an Operational Gap Audit or related engagement.
+      </p>
+      <p>
+        We do not sell your information. Form submissions may open your email client or be processed
+        by a form provider once configured; those vendors will be listed here when in use.
+      </p>
+      <p>
+        Questions:
+        <a class="text-ink underline decoration-accent underline-offset-2" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

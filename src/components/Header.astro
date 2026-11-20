@@ -1,0 +1,117 @@
+---
+import { site } from '../lib/site';
+
+const pathname = Astro.url.pathname;
+const links = [
+  { href: '/audit', label: 'The Audit' },
+  { href: '/how-we-work', label: 'How we work' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  data-solid="false"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-8">
+    <a
+      href="/"
+      class="header-brand font-display text-sm font-semibold tracking-[0.14em] text-white transition md:text-base"
+    >
+      {site.name}
+    </a>
+
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'header-link text-sm transition',
+              pathname === link.href || pathname === `${link.href}/`
+                ? 'text-white'
+                : 'text-white/70 hover:text-white',
+            ]}
+            data-active={pathname === link.href || pathname === `${link.href}/`}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href={site.primaryCtaHref} class="btn-primary !py-2 !px-3.5">
+        {site.primaryCta}
+      </a>
+    </nav>
+
+    <details class="relative md:hidden">
+      <summary
+        class="header-menu-btn list-none cursor-pointer rounded-sm border border-white/30 px-3 py-2 text-sm text-white"
+      >
+        Menu
+      </summary>
+      <div
+        class="absolute right-0 mt-2 w-56 rounded-sm border border-border bg-surface-elevated p-3 shadow-lg"
+      >
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="block rounded-sm px-3 py-2 text-sm text-ink hover:bg-surface"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <a
+          href={site.primaryCtaHref}
+          class="btn-primary mt-2 !flex w-full !py-2.5 text-center"
+        >
+          {site.primaryCta}
+        </a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<style>
+  #site-header[data-solid='true'] {
+    background: color-mix(in srgb, var(--color-surface-elevated) 92%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  #site-header[data-solid='true'] .header-brand,
+  #site-header[data-solid='true'] .header-link {
+    color: var(--color-ink);
+  }
+
+  #site-header[data-solid='true'] .header-link[data-active='true'] {
+    color: var(--color-ink);
+  }
+
+  #site-header[data-solid='true'] .header-link:not([data-active='true']) {
+    color: color-mix(in srgb, var(--color-ink) 65%, transparent);
+  }
+
+  #site-header[data-solid='true'] .header-link:hover {
+    color: var(--color-ink);
+  }
+
+  #site-header[data-solid='true'] .header-menu-btn {
+    border-color: var(--color-border);
+    color: var(--color-ink);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  if (header) {
+    const sync = () => {
+      header.dataset.solid = window.scrollY > 48 ? 'true' : 'false';
+    };
+    sync();
+    window.addEventListener('scroll', sync, { passive: true });
+  }
+</script>

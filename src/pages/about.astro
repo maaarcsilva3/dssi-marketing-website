@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+  title={`About ${site.name} | Founder-led operational software studio`}
+  description="Who we are: a founder-led team that builds custom operational systems, then warehouse and AI on trustworthy data—honest, fixed-scope, no fake logos."
+>
+  <Header />
+  <PageHeader
+    eyebrow="About"
+    title="DSSI builds operational systems—and the data layer behind them"
+    subtitle="A founder-led studio that discovers what's broken in how work gets done, ships software to fix it, then adds warehouse and AI when the numbers are worth trusting."
+  />
+
+  <section class="bg-surface-elevated">
+    <div class="mx-auto max-w-3xl px-5 py-20 md:px-8">
+      <p class="text-lg leading-relaxed text-ink">
+        <strong>{site.name}</strong> partners with organizations whose operations have become too
+        heavy for spreadsheets and chat threads, but who still need
+        <strong>bespoke software</strong> that matches how they actually work—not another platform
+        sold the same way to everyone.
+      </p>
+      <p class="mt-6 text-base leading-relaxed text-ink-muted">
+        Our work follows a straight line: identify operational needs, find the gaps between tools and
+        reality, build custom systems to bridge them, and capture structured data as those systems
+        run. From that foundation we stand up a data warehouse and apply AI for analysis, ad hoc
+        reporting, and forecasting—integrated in the product or through channels that fit your team.
+      </p>
+      <h2 class="mt-14 font-display text-2xl font-bold">How we show up</h2>
+      <ul class="mt-6 space-y-4 text-sm leading-relaxed text-ink-muted">
+        <li class="border-l-2 border-accent pl-4">
+          Founder-led discovery and delivery—no bait-and-switch to a faceless bench.
+        </li>
+        <li class="border-l-2 border-accent pl-4">
+          Fixed scope until trust is earned—paid audit, written pilot, then expand.
+        </li>
+        <li class="border-l-2 border-accent pl-4">
+          Honest about being early—no fake logos; we earn proof through your live process.
+        </li>
+        <li class="border-l-2 border-accent pl-4">
+          All industries welcome—if operations create data, we can structure it and build on it.
+        </li>
+      </ul>
+      <p class="mt-10 text-sm text-ink-muted">
+        If you want clarity on what we build before you buy a giant transformation, start with a
+        conversation—or the Operational Gap Audit.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+  <Footer />
+</BaseLayout>

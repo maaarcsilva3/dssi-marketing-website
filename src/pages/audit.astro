@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+  title={`Operational Gap Audit | ${site.name}`}
+  description="Paid, fixed-scope discovery: process map, #1 prioritized fix, success metric, and a written pilot option—your entry point to custom systems and data."
+>
+  <Header />
+  <PageHeader
+    eyebrow="The offer"
+    title="Operational Gap Audit"
+    subtitle="A short, paid engagement that maps one critical process, names the #1 fix, and leaves you with a fixed-scope build option—plus a clear picture of how custom systems, data warehouse, and AI fit your road ahead."
+  />
+
+  <section class="bg-surface-elevated">
+    <div class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight">What you get</h2>
+      <ul class="mt-10 grid gap-6 md:grid-cols-2">
+        <li class="border-t border-border pt-5">
+          <p class="font-display text-lg font-semibold">Process map</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            As-is flow for the process that hurts most—tools, handoffs, and where trust breaks down.
+          </p>
+        </li>
+        <li class="border-t border-border pt-5">
+          <p class="font-display text-lg font-semibold">#1 prioritized fix</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            One gap to close first, with why it pays back fastest and what “done” looks like.
+          </p>
+        </li>
+        <li class="border-t border-border pt-5">
+          <p class="font-display text-lg font-semibold">Success metric</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            A measure you can check in daily use—time saved, errors cut, or a number leadership trusts.
+          </p>
+        </li>
+        <li class="border-t border-border pt-5">
+          <p class="font-display text-lg font-semibold">Fixed-price pilot option</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            Written scope, timeline, and price for the custom system. Audit fee may credit toward
+            build if you proceed.
+          </p>
+        </li>
+        <li class="border-t border-border pt-5 md:col-span-2">
+          <p class="font-display text-lg font-semibold">Data & AI readiness view</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            Plain-language note on what a warehouse and practical AI could unlock after the first
+            system is trusted—not a premature AI pitch.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-surface">
+    <div class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight">Timeline</h2>
+      <div class="mt-10 grid gap-8 md:grid-cols-3">
+        <div class="border-t-2 border-accent pt-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">Days 1–3</p>
+          <p class="mt-2 font-display text-xl font-semibold">Kickoff & access</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            Stakeholder interviews, tool and data-source inventory, agree the hero process.
+          </p>
+        </div>
+        <div class="border-t-2 border-accent pt-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">Sessions 2–3</p>
+          <p class="mt-2 font-display text-xl font-semibold">Map & prioritize</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            Walk the workflow, quantify failure cost, lock the #1 gap and success metric.
+          </p>
+        </div>
+        <div class="border-t-2 border-accent pt-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-ink-muted">Close</p>
+          <p class="mt-2 font-display text-xl font-semibold">Written deliverable</p>
+          <p class="mt-2 text-sm text-ink-muted">
+            Gap brief, recommended custom-system scope, and fixed SOW—or an honest “don’t build yet.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface-elevated">
+    <div class="mx-auto max-w-6xl px-5 py-20 md:px-8">
+      <h2 class="font-display text-3xl font-bold tracking-tight">Investment</h2>
+      <p class="mt-4 max-w-2xl text-ink-muted">
+        Fixed fee confirmed on the fit call. This is paid discovery, not a free workshop or
+        open-ended consulting retainer. You’ll know the audit price before you commit; pilot pricing
+        is in the written SOW.
+      </p>
+      <a href={site.primaryCtaHref} class="btn-primary mt-8">{site.primaryCta}</a>
+    </div>
+  </section>
+
+  <CtaBand
+    headline="Map one gap. See the path to the full build."
+    body="Book a fit call or request the Operational Gap Audit—we'll reply with next steps."
+  />
+  <Footer />
+</BaseLayout>

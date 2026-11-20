@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { site } from '../lib/site';
+---
+
+<BaseLayout
+  title={`How we work | ${site.name}`}
+  description="Fit call → Operational Gap Audit → custom system pilot → warehouse and practical AI when you're ready. Clear milestones, no vague roadmap."
+>
+  <Header />
+  <PageHeader
+    eyebrow="Process"
+    title="From fit call to custom systems, warehouse, and AI"
+    subtitle="We sell outcomes on a calendar: discover the gap, ship software people use, then layer data and intelligence when the foundation is solid."
+  />
+
+  <section class="bg-surface-elevated">
+    <div class="mx-auto max-w-3xl px-5 py-20 md:px-8">
+      <ol class="space-y-12">
+        <li class="grid gap-3 md:grid-cols-[7rem_1fr]">
+          <p class="font-display text-sm font-semibold text-accent">Before</p>
+          <div>
+            <h2 class="font-display text-2xl font-bold">Fit call</h2>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Thirty minutes. One process, rough cost of the pain, and whether an Operational Gap
+              Audit is worth it. If we're not the right fit, we'll say so.
+            </p>
+          </div>
+        </li>
+        <li class="grid gap-3 md:grid-cols-[7rem_1fr]">
+          <p class="font-display text-sm font-semibold text-accent">Week 1–2</p>
+          <div>
+            <h2 class="font-display text-2xl font-bold">Operational Gap Audit</h2>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Interviews, gap map, success metric, and a fixed SOW for the pilot. You leave
+              decision-ready even if you never build with us.
+            </p>
+          </div>
+        </li>
+        <li class="grid gap-3 md:grid-cols-[7rem_1fr]">
+          <p class="font-display text-sm font-semibold text-accent">Weeks 3–6</p>
+          <div>
+            <h2 class="font-display text-2xl font-bold">Fixed-scope pilot</h2>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Build the custom system named in the SOW—workflow, integrations, operational views.
+              Milestones, change control, and a metric you feel in the first month of use.
+            </p>
+          </div>
+        </li>
+        <li class="grid gap-3 md:grid-cols-[7rem_1fr]">
+          <p class="font-display text-sm font-semibold text-accent">After pilot</p>
+          <div>
+            <h2 class="font-display text-2xl font-bold">Harden & hypercare</h2>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Documentation, fixes from real use, short hypercare. Phase 2 only when the first
+              deliverable is used weekly.
+            </p>
+          </div>
+        </li>
+        <li class="grid gap-3 md:grid-cols-[7rem_1fr]">
+          <p class="font-display text-sm font-semibold text-accent">Next</p>
+          <div>
+            <h2 class="font-display text-2xl font-bold">Data warehouse</h2>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Consolidate operational data from the system (and agreed sources) into a warehouse
+              structured for reporting.
+            </p>
+          </div>
+        </li>
+        <li class="grid gap-3 md:grid-cols-[7rem_1fr]">
+          <p class="font-display text-sm font-semibold text-accent">Then</p>
+          <div>
+            <h2 class="font-display text-2xl font-bold">Practical AI</h2>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+              Ad hoc analysis, standard reports, forecasting—embedded in the app or via channels
+              your team adopts. Scope and channel chosen for usefulness, not buzz.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <CtaBand />
+  <Footer />
+</BaseLayout>
